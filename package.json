@@ -24,7 +24,9 @@
     "template-project",
     "continuous-integration",
     "skeleton",
-    "setup"
+    "setup",
+    "ioc",
+    "service"
   ],
   "author": "Maxim Karpov <makame@mail.ru>",
   "license": "MIT",
