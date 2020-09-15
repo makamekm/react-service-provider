@@ -4,7 +4,7 @@
 npm i --save react-service-provider
 ```
 
-This package has been created for easily inplementing IOC Design Pattern & Services.
+This package has been created for inplementing IOC Design Pattern & Services.
 
 Example:
 
