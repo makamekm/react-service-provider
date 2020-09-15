@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/makamekm/react-service-provider/compare/v1.0.2...v1.1.0) (2020-09-15)
+
+
+### Features
+
+* add useServiceProvider hook ([2273e0c](https://github.com/makamekm/react-service-provider/commit/2273e0c92735f000b7b538300c978185a124f381))
+
 ## [1.0.2](https://github.com/makamekm/react-service-provider/compare/v1.0.1...v1.0.2) (2020-09-15)
 
 
