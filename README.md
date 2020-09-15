@@ -1,43 +1,91 @@
-# npm-react-typescript-package-template
+# React Service Provider
 
-[![Build Status](https://travis-ci.org/jlison/npm-react-typescript-package-template.svg?branch=master)](https://travis-ci.org/jlison/npm-react-typescript-package-template)
-[![codecov](https://codecov.io/gh/jlison/npm-react-typescript-package-template/branch/master/graph/badge.svg)](https://codecov.io/gh/jlison/npm-react-typescript-package-template)
-[![Maintainability](https://api.codeclimate.com/v1/badges/c2478b21ac94e8e5fe16/maintainability)](https://codeclimate.com/github/jlison/npm-react-typescript-package-template/maintainability)
-[![All Contributors](https://img.shields.io/badge/all_contributors-0-orange.svg?style=flat-square)](#contributors-)
-[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+```
+npm i --save react-service-provider
+```
 
-A template to generate a npm package for a react app using typescript and modern
-CI tools.
+This package has been created for easily inplementing IOC Design Pattern & Services.
 
-## Usage
+Example:
 
-1. Fork.
-2. Use fork to start a
-   [new repository using the template.](https://help.github.com/en/articles/creating-a-repository-from-a-template)
-3. Globally search and replace:
-   - `npm-react-typescript-package-template` for `<your-repo-name>`.
-4. Enable:
-   - [Codecov.](https://codecov.io)
-   - [Code Climate.](https://codeclimate.com/oss/)
-   - [Travis CI.](https://travis-ci.org)
-     - Add codecov env variable.
-   - [semantic-release.](https://github.com/semantic-release/semantic-release/blob/HEAD/docs/usage/getting-started.md#getting-started)
-5. Update this README.md, [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md),
-   [CONTRIBUTING.md](CONTRIBUTING.md), etc.
+## SomeComponent.tsx (observer is from MobX)
 
-## Contributors ✨
+```
+const SomeComponent = observer((props) => {
+  const secondService = React.useContext(SecondService);
+  return (
+     <div onClick={secondService.increaseCounter}>
+       {secondService.counter}
+     </div>
+  );
+});
+```
 
-Thanks goes to these wonderful people
-([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+## index.tsx
 
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<!-- markdownlint-enable -->
-<!-- prettier-ignore-end -->
+```
+export const App = () => {
+  const [ServiceProvider] = React.useState<React.FC>(() =>
+    ServiceProviderFactory(
+      FirstService,
+      SecondService,
+    )
+  );
 
-<!-- ALL-CONTRIBUTORS-LIST:END -->
+  return (
+    <ServiceProvider>
+      <Router basename={basePath}>
+        <ServiceProviderHook>
+         <AppLayout>
+           <RoutedContent />
+         </AppLayout>
+        </ServiceProviderHook>
+      </Router>
+    </ServiceProvider>
+  );
+};
+```
 
-This project follows the
-[all-contributors](https://github.com/all-contributors/all-contributors)
-specification. Contributions of any kind welcome!
+## FirstService.tsx (useLocalStore is from MobX)
+
+```
+export const FirstService = createService(
+  () => {
+    const service = useLocalStore(() => ({
+      counter: 0,
+      get isCounterBigger5() {
+        return service.counter > 5;
+      },
+      limitCounter: () => {
+        if (service.isCounterBigger5) {
+          service.counter = 0;
+        }
+      },
+    }));
+    return service;
+  }
+);
+```
+
+## SecondService.tsx (useLocalStore is from MobX)
+
+```
+export const SecondService = createService(
+  () => {
+    const service = useLocalStore(() => ({
+      firstService: null as FirstService,
+      get counter() {
+        return service.firstService.counter > 5;
+      },
+      increaseCounter: () => {
+        service.firstService.counter++;
+        service.firstService.limitCounter();
+      },
+    }));
+    return service;
+  },
+  (service) => {
+    service.firstService = React.useContext(FirstService);
+  }
+);
+```
