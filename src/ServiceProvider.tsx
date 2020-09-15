@@ -1,6 +1,13 @@
 import React from "react";
 import { ServiceContextHook, ServiceProviderContext } from "./context";
 
+export function useServiceProvider(...services: ServiceContextHook[]) {
+  const [ServiceProvider] = React.useState<React.FC>(() =>
+    ServiceProviderFactory(...services)
+  );
+  return [ServiceProvider, ServiceProviderHook];
+}
+
 export function createService<T>(
   useState: () => T,
   useLogic: (state: T) => void = () => {}

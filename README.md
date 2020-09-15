@@ -25,11 +25,9 @@ const SomeComponent = observer((props) => {
 
 ```
 export const App = () => {
-  const [ServiceProvider] = React.useState<React.FC>(() =>
-    ServiceProviderFactory(
-      FirstService,
-      SecondService,
-    )
+  const [ServiceProvider, ServiceProviderHook] = useServiceProvider(
+    FirstService,
+    SecondService,
   );
 
   return (
