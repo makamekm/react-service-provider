@@ -89,3 +89,11 @@ export const SecondService = createService(
   }
 );
 ```
+
+# Development
+
+To merge with the latest tag:
+
+```
+git merge $(git describe --tags $(git rev-list --tags --max-count=1))
+```
