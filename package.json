@@ -1,6 +1,6 @@
 {
   "name": "react-service-provider",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "React Service Provider",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
