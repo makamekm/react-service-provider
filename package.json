@@ -11,6 +11,7 @@
     "commit": "cz",
     "format": "prettier --write \"**/*.+(ts|tsx|md|yml|json)\"",
     "lint": "eslint ./src --ext .jsx,.ts,.tsx --ignore-pattern *.test.ts,*.test.tsx",
+    "lint-staged": "lint-staged",
     "semantic-release": "semantic-release",
     "test:update": "npm test -- --updateSnapshot --coverage",
     "test": "NODE_ENV=test jest --config=jest.config.js --coverage --forceExit --detectOpenHandles",
@@ -43,7 +44,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "npm run lint-staged; npm run test; git add ./tests/coverage/badge.svg"
     }
   },
   "lint-staged": {
