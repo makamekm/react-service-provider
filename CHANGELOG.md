@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/makamekm/react-service-provider/compare/v1.1.4...v1.2.0) (2020-09-29)
+
+
+### Features
+
+* add mock ([d7cb2f9](https://github.com/makamekm/react-service-provider/commit/d7cb2f9436635d06b625a1c2830ce8d4198f9d00))
+
 ## [1.1.4](https://github.com/makamekm/react-service-provider/compare/v1.1.3...v1.1.4) (2020-09-29)
 
 
