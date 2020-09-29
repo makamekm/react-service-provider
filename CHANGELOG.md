@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/makamekm/react-service-provider/compare/v1.1.3...v1.1.4) (2020-09-29)
+
+
+### Bug Fixes
+
+* add tests ([5992993](https://github.com/makamekm/react-service-provider/commit/5992993c820987e5fc7fa120008e60e747d8d3bd))
+
 ## [1.1.3](https://github.com/makamekm/react-service-provider/compare/v1.1.2...v1.1.3) (2020-09-25)
 
 
