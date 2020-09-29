@@ -44,13 +44,14 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint-staged; npm run test; git add ./tests/coverage/badge.svg"
+      "pre-commit": "npm run lint-staged; git add ./tests/coverage/badge.svg"
     }
   },
   "lint-staged": {
     "*.{tsx,ts}": [
       "eslint --fix",
       "prettier --write",
+      "NODE_ENV=test jest --config=jest.config.js --coverage --forceExit --detectOpenHandles --findRelatedTests",
       "git add"
     ]
   },
