@@ -19,5 +19,5 @@ module.exports = {
   },
   preset: "ts-jest",
   testMatch: null,
-  coverageReporters: ["json-summary"],
+  coverageReporters: ["json-summary", "json", "lcov", "text", "clover"],
 };

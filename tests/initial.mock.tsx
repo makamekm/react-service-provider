@@ -59,3 +59,42 @@ export const TestApp = ({ servicesOnReady }: { servicesOnReady?: any }) => {
     </ServiceProvider>
   );
 };
+
+export const TestMockApp = ({ mockValue }: { mockValue: any }) => {
+  const [ServiceProvider, ServiceProviderHook] = useServiceProvider([
+    TestServiceFirst,
+    mockValue,
+  ]);
+  return (
+    <ServiceProvider>
+      <div className="container">
+        <ServiceProviderHook>
+          <TestAppClick />
+        </ServiceProviderHook>
+      </div>
+    </ServiceProvider>
+  );
+};
+
+export const TestMockHookApp = ({
+  mockValue,
+  mockHook,
+}: {
+  mockValue: any;
+  mockHook: any;
+}) => {
+  const [ServiceProvider, ServiceProviderHook] = useServiceProvider([
+    TestServiceFirst,
+    mockValue,
+    mockHook,
+  ]);
+  return (
+    <ServiceProvider>
+      <div className="container">
+        <ServiceProviderHook>
+          <TestAppClick />
+        </ServiceProviderHook>
+      </div>
+    </ServiceProvider>
+  );
+};
