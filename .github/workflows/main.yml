@@ -30,6 +30,9 @@ jobs:
       # Run tests
       - name: Test
         run: npm test
+      # Generate coverage
+      - name: Coverage
+        run: npm run test:coverage:badge
       # Run build
       - name: Build
         run: npm run build

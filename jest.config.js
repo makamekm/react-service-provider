@@ -1,26 +1,23 @@
 module.exports = {
   globals: {
-    'ts-jest': {
-      tsConfig: 'tsconfig.json',
+    "ts-jest": {
+      tsConfig: "tsconfig.json",
       ignoreCoverageForDecorators: true,
       ignoreCoverageForAllDecorators: true,
     },
   },
-  coverageDirectory: './tests/coverage/',
+  coverageDirectory: "./tests/coverage/",
   transform: {
-    '^.+\\.(ts|tsx)$': 'ts-jest',
+    "^.+\\.(ts|tsx)$": "ts-jest",
   },
-  testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(tsx?)$',
-  testPathIgnorePatterns: [
-    '<rootDir>/.next/',
-  ],
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
-  transformIgnorePatterns: [
-    'node_modules',
-  ],
+  testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.(tsx?)$",
+  testPathIgnorePatterns: ["<rootDir>/.next/"],
+  setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
+  transformIgnorePatterns: ["node_modules"],
   moduleNameMapper: {
-    '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
+    "\\.(css|less|scss|sass)$": "identity-obj-proxy",
   },
-  preset: 'ts-jest',
+  preset: "ts-jest",
   testMatch: null,
+  coverageReporters: ["json-summary"],
 };

@@ -1,5 +1,7 @@
 # React Service Provider
 
+![Alt text](./tests/coverage/badge.svg)
+
 ```
 npm i --save react-service-provider
 ```
